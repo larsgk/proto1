@@ -38,10 +38,10 @@ define(["exports"],function(_exports){"use strict";Object.defineProperty(_export
             <canvas id="graph"></canvas>
         </div>
         <div class="content ${1===this.selected?"show":""}">
-            <img style="width:80%" src="/images/siteview.jpg"/>
+            <img style="width:80%" src="./images/siteview.jpg"/>
         </div>
         <div class="content ${2===this.selected?"show":""}">
-        <img style="width:80%" src="/images/arview.jpg"/>
+        <img style="width:80%" src="./images/arview.jpg"/>
         </div>
         `}constructor(){super();this.selected=0}firstUpdated(){graph=this.shadowRoot.querySelector("#graph");addGuide("zero_guide",{min:0,name:"ZERO"});addPen("defcon",{color:"#ffffff",name:"defcon",lineWidth:3});addPen("x",{color:"#ff0000",name:"x",lineWidth:3});addPen("y",{color:"#00ff00",name:"y",lineWidth:3});addPen("z",{color:"#0000ff",name:"z",lineWidth:3});const ro=new ResizeObserver(entries=>{var _Mathceil=Math.ceil;for(let entry of entries){const cr=entry.contentRect;graph._width=_Mathceil(cr.width);graph._height=_Mathceil(cr.height);graph.setAttribute("width",graph._width);graph.setAttribute("height",graph._height);_recalcFactors()}});ro.observe(graph);_recalcFactors();requestAnimationFrame(_gameLoop);Mesh.addEventListener("debug-mesh-alert-level",evt=>{addValue("defcon",2*evt.detail.level-2)})}}_exports.BackgroundView=BackgroundView;customElements.define("background-view",BackgroundView);_exports.$backgroundView={BackgroundView:BackgroundView};class ControlButton extends LitElement{static get properties(){return{selected:{type:Boolean,reflect:!0},toggle:{type:Boolean,reflect:!0}}}render(){return html`
         <style>
